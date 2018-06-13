@@ -1,10 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
+import Screen2 from './components/screen2.js';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { backgroundColor: '#ffffff' }
+    this.state = { 
+      backgroundColor: '#ffffff', 
+      screen: 1,
+    }
   }
   onPress() {
     let colors = '0123456789abcdef';
@@ -13,41 +17,51 @@ export default class App extends React.Component {
     this.setState({ backgroundColor: random });
   }
 
+  changeScreen() {
+    if (this.state.screen === 1) {
+      this.setState({ screen: 2 });
+    } else {
+      this.setState({ screen: 1 });
+    }
+  }
+
   render() {
-    return (
-      <View style={ [styles.container, this.state] }>
-        <TouchableOpacity onPress={this.onPress.bind(this)}>
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>Random Color</Text>
-          </View>
-        </TouchableOpacity>
-        
-        <TouchableOpacity onPress={this.onPress.bind(this)}>
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>Random Color</Text>
-          </View>
-        </TouchableOpacity>
+    if (this.state.screen === 1) {
+      return (
+        <View style={[ styles.container, {backgroundColor: this.state.backgroundColor} ]}>
+          <TouchableOpacity onPress={this.onPress.bind(this)}>
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>Random Color</Text>
+            </View>
+          </TouchableOpacity>
+          
+          <TouchableOpacity onPress={this.onPress.bind(this)}>
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>Random Color</Text>
+            </View>
+          </TouchableOpacity>
 
-        <TouchableOpacity onPress={this.onPress.bind(this)}>
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>Random Color</Text>
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={this.onPress.bind(this)}>
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>Random Color</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
-    );
+          <TouchableOpacity onPress={this.changeScreen.bind(this)}>
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>Change to page 2</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+      );
+    } else {
+      return (
+        <Screen2 
+          style = {[ styles.container, {backgroundColor: this.state.backgroundColor }]} 
+          changeScreen = {this.changeScreen.bind(this)}
+        />
+      );
+    }
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 2,
-    backgroundColor: 'white',
     justifyContent: 'space-evenly',
     alignItems: 'center',
   },
