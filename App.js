@@ -34,16 +34,10 @@ export default class App extends React.Component {
               <Text style={styles.buttonText}>Random Color</Text>
             </View>
           </TouchableOpacity>
-          
-          <TouchableOpacity onPress={this.onPress.bind(this)}>
-            <View style={styles.button}>
-              <Text style={styles.buttonText}>Random Color</Text>
-            </View>
-          </TouchableOpacity>
 
           <TouchableOpacity onPress={this.changeScreen.bind(this)}>
             <View style={styles.button}>
-              <Text style={styles.buttonText}>Change to page 2</Text>
+              <Text style={styles.buttonText}>Other Page</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -61,18 +55,19 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 2,
+    flex: 1,
     justifyContent: 'space-evenly',
+    flexDirection: 'row',
     alignItems: 'center',
   },
   button: {
     height: 100,
-    width: 200,
-    alignItems: 'center',
+    width: 150,
+    justifyContent: 'space-around', 
     backgroundColor: '#666',
   }, 
   buttonText: {
-    padding: 40,
+    padding: 30,
     color: 'white', 
   }
 });
