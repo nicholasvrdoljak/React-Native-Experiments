@@ -10,7 +10,7 @@ export default class Screen2 extends Component {
     render() {
         return (
             <View style={ this.props.style }>
-                <Button title={'this works'} onPress={this.props.changeScreen}/>
+                <Button title={'Go Back'} onPress={this.props.changeScreen}/>
             </View>
         )
     }
