@@ -27,19 +27,27 @@ export default class App extends React.Component {
 
   render() {
     return(
-        <View style={[ styles.container, {backgroundColor: this.state.backgroundColor} ]}>
-            <TouchableOpacity onPress={this.onPress.bind(this)}>
-              <View style={styles.button}>
-                <Text style={styles.buttonText}>Random Color</Text>
-              </View>
-            </TouchableOpacity>
+        <View style={{backgroundColor: this.state.backgroundColor}}>
 
-            <TouchableOpacity onPress={this.changeScreen.bind(this)}>
-              <View style={styles.button}>
-                <Text style={styles.buttonText}>Other Page</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
+          <Screen2 style={styles.text}/>
+
+          <View style = {[styles.container, {backgroundColor: this.state.backgroundColor}]}>
+
+          <TouchableOpacity onPress={this.onPress.bind(this)}>
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>Random Color</Text>
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={this.changeScreen.bind(this)}>
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>Other Page</Text>
+            </View>
+          </TouchableOpacity>
+
+        </View>
+
+      </View>
     )
   }
 }
@@ -60,5 +68,11 @@ const styles = StyleSheet.create({
   buttonText: {
     padding: 30,
     color: 'white', 
+  }, 
+  text: {
+    flex: 1, 
+    flexDirection: 'row',
+    alignItems: 'center', 
+    justifyContent: 'center',
   }
 });
