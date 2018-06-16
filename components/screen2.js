@@ -9,9 +9,7 @@ export default class Screen2 extends Component {
 
     render() {
         return (
-            <View style={this.props.style}>
-                <Text> Profile Here! </Text>
-            </View>
+            <Text> Profile Here! </Text>
         );
     }
 }

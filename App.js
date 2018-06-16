@@ -27,11 +27,17 @@ export default class App extends React.Component {
 
   render() {
     return(
-        <View style={{backgroundColor: this.state.backgroundColor}}>
+      <View style={{flex: 1, backgroundColor: this.state.backgroundColor}}>
 
-          <Screen2 style={styles.text}/>
+        {
+          this.state.screen===2 ? (
+            <View style={styles.text}>
+              <Screen2/>
+            </View>
+          ) : null
+        }
 
-          <View style = {[styles.container, {backgroundColor: this.state.backgroundColor}]}>
+        <View style={styles.container}>
 
           <TouchableOpacity onPress={this.onPress.bind(this)}>
             <View style={styles.button}>
@@ -55,8 +61,8 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-evenly',
     flexDirection: 'row',
+    justifyContent: 'space-evenly',
     alignItems: 'flex-end',
   },
   button: {
