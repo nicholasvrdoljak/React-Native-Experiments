@@ -26,30 +26,21 @@ export default class App extends React.Component {
   }
 
   render() {
-    if (this.state.screen === 1) {
-      return (
+    return(
         <View style={[ styles.container, {backgroundColor: this.state.backgroundColor} ]}>
-          <TouchableOpacity onPress={this.onPress.bind(this)}>
-            <View style={styles.button}>
-              <Text style={styles.buttonText}>Random Color</Text>
-            </View>
-          </TouchableOpacity>
+            <TouchableOpacity onPress={this.onPress.bind(this)}>
+              <View style={styles.button}>
+                <Text style={styles.buttonText}>Random Color</Text>
+              </View>
+            </TouchableOpacity>
 
-          <TouchableOpacity onPress={this.changeScreen.bind(this)}>
-            <View style={styles.button}>
-              <Text style={styles.buttonText}>Other Page</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
-      );
-    } else {
-      return (
-        <Screen2 
-          style = {[ styles.container, {backgroundColor: this.state.backgroundColor }]} 
-          changeScreen = {this.changeScreen.bind(this)}
-        />
-      );
-    }
+            <TouchableOpacity onPress={this.changeScreen.bind(this)}>
+              <View style={styles.button}>
+                <Text style={styles.buttonText}>Other Page</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+    )
   }
 }
 
@@ -58,7 +49,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-evenly',
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-end',
   },
   button: {
     height: 100,
