@@ -2,14 +2,14 @@ import React, { Component } from 'React';
 import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
 
 
-export default class Screen2 extends Component {
+export default class Skills extends Component {
     constructor(props) {
         super(props);
     }
 
     render() {
         return (
-            <Text> Profile Here! </Text>
+            <Text> Skills </Text>
         );
     }
 }

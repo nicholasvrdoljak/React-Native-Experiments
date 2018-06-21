@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
-import Screen2 from './components/screen2.js';
+import Education from './components/education.js';
+import Projects from './components/projects.js';
+import Skills from './components/skills.js';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -17,39 +19,65 @@ export default class App extends React.Component {
     this.setState({ backgroundColor: random });
   }
 
-  changeScreen() {
-    if (this.state.screen === 1) {
-      this.setState({ screen: 2 });
-    } else {
-      this.setState({ screen: 1 });
-    }
+  changeScreen(screen) {
+    this.setState({screen})
   }
 
   render() {
     return(
       <View style={{flex: 1, backgroundColor: this.state.backgroundColor}}>
 
+        <View style={styles.home}>
+          <TouchableOpacity onPress={this.changeScreen.bind(this, 'home')}>
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>Home</Text>
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={this.onPress.bind(this)}>
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>Rndm Clr</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+        
         {
-          this.state.screen===2 ? (
+          this.state.screen==='education' ? (
             <View style={styles.text}>
-              <Screen2/>
+              <Education/>
+            </View>
+          ) : 
+          this.state.screen==='skills' ? (
+            <View style={styles.text}>
+              <Skills/>
+            </View>
+          ) : 
+          this.state.screen==='projects' ? (
+            <View style={styles.text}>
+              <Projects/>
             </View>
           ) : null
         }
 
         <View style={styles.container}>
-
-          <TouchableOpacity onPress={this.onPress.bind(this)}>
+          <TouchableOpacity onPress={this.changeScreen.bind(this, 'skills')}>
             <View style={styles.button}>
-              <Text style={styles.buttonText}>Random Color</Text>
+              <Text style={styles.buttonText}>Sklz</Text>
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={this.changeScreen.bind(this)}>
+          <TouchableOpacity onPress={this.changeScreen.bind(this, 'projects')}>
             <View style={styles.button}>
-              <Text style={styles.buttonText}>Other Page</Text>
+              <Text style={styles.buttonText}>Prjct</Text>
             </View>
           </TouchableOpacity>
+
+          <TouchableOpacity onPress={this.changeScreen.bind(this, 'education')}>
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>Edu</Text>
+            </View>
+          </TouchableOpacity>
+
 
         </View>
 
@@ -59,6 +87,12 @@ export default class App extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  home: {
+    flex: 1,
+    flexDirection: 'row', 
+    justifyContent: 'space-evenly', 
+    alignItems: 'flex-start'
+  },
   container: {
     flex: 1,
     flexDirection: 'row',
@@ -67,12 +101,12 @@ const styles = StyleSheet.create({
   },
   button: {
     height: 100,
-    width: 150,
+    width: 100,
     justifyContent: 'space-around', 
     backgroundColor: '#666',
   }, 
   buttonText: {
-    padding: 30,
+    padding: 10,
     color: 'white', 
   }, 
   text: {
